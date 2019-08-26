@@ -56,7 +56,7 @@ describe('media-observer', () => {
         return mediaQuery || ((bp.alias === alias) ? bp.mediaQuery : null);
       }, null) as string || NOT_FOUND;
     };
-    it('can supports the `.isActive()` API', () => {
+    it('should support the `.isActive()` API', () => {
       expect(media$).toBeDefined();
 
       // Activate mediaQuery associated with 'md' alias
@@ -70,7 +70,7 @@ describe('media-observer', () => {
       mediaController.clearAll();
     });
 
-    it('can supports RxJS operators', fakeAsync(() => {
+    it('should support RxJS operators', fakeAsync(() => {
       let count = 0,
           onlyMd = (change: MediaChange) => (change.mqAlias == 'md'),
           subscription = media$
@@ -100,7 +100,7 @@ describe('media-observer', () => {
       subscription.unsubscribe();
     }));
 
-    it('can subscribe to built-in mediaQueries',  fakeAsync(() => {
+    it('should subscribe to built-in mediaQueries',  fakeAsync(() => {
       let current: MediaChange = new MediaChange(true);
       let subscription = media$.subscribe((change: MediaChange) => {
         current = change;
@@ -136,7 +136,7 @@ describe('media-observer', () => {
       }
     }));
 
-    it('can `.unsubscribe()` properly', fakeAsync(() => {
+    it('should `.unsubscribe()` properly', fakeAsync(() => {
       let current: MediaChange = new MediaChange(true);
       let subscription = media$.subscribe((change: MediaChange) => {
         current = change;
@@ -158,7 +158,7 @@ describe('media-observer', () => {
        mediaController.clearAll();
     }));
 
-    it('can observe a startup activation of XS', fakeAsync(() => {
+    it('should observe a startup activation of XS', fakeAsync(() => {
       let current: MediaChange = new MediaChange(true);
       let subscription = media$.subscribe((change: MediaChange) => {
         current = change;
@@ -211,7 +211,7 @@ describe('media-observer', () => {
       mediaController.clearAll();
     });
 
-    it('can activate custom alias with custom mediaQueries', fakeAsync(() => {
+    it('should activate custom alias with custom mediaQueries', fakeAsync(() => {
       let current: MediaChange = new MediaChange(true);
       let subscription = mediaObserver.asObservable()
             .subscribe((changes: MediaChange[]) => {
@@ -263,7 +263,7 @@ describe('media-observer', () => {
       media$ = _mediaObserver.media$;
     }));
 
-    it('can activate when configured with "md" alias', fakeAsync(() => {
+    it('should activate when configured with "md" alias', fakeAsync(() => {
         let current: MediaChange = new MediaChange(true);
         let subscription = media$.subscribe((change: MediaChange) => {
           current = change;
@@ -312,7 +312,7 @@ describe('media-observer', () => {
       mediaController.clearAll();
     });
 
-    it('will skip print activation without alias', fakeAsync(() => {
+    it('should skip print activation without alias', fakeAsync(() => {
       let current: MediaChange = new MediaChange(true);
       let subscription = media$.subscribe((change: MediaChange) => {
         current = change;
